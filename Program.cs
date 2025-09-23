@@ -112,19 +112,6 @@ while(running)
                                           Console.WriteLine($"\n{course.CourseName} for class: {course.CourseToClass}");
                                     }
                               }
-                              // var StudentNameToCourse = file_list.Where(f => f.StudentNameToCourse == s.ClassRoom).ToList();
-                              // var CourseNameToStudent = file_list.Where(c => c.CourseNameToStudent == a.CourseToClass).ToList();
-                              // if(StudentNameToCourse == CourseNameToStudent)
-                              // {
-                              //       foreach(var course in Course_List)
-                              //       {
-                              //             Console.WriteLine($"Course name: {course.CourseName} Classroom: {course.CourseToClass}");
-                              //       }
-                              // }
-                              // else
-                              // {
-                              //       Console.WriteLine($"{s.Name} have courses yet...");
-                              // }
                         break;
                   }
             }
