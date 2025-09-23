@@ -1,4 +1,4 @@
-﻿﻿using App;
+﻿using App;
 // Recreate Learnpoint in the Terminal
 // Logga in, Logga ut DONE
 // Students, Teachers, Admin DONE
@@ -11,16 +11,14 @@
 // ...
 // hello git hub!!
 
-
-
 List<CreateCourse> Course_List = new List<CreateCourse>();
+Course_List.Add(new CreateCourse{ CourseName = "introduktion mjuvaruutveckling", CourseToClass = "mai-25-ha",});
+Course_List.Add(new CreateCourse{ CourseName = "Object orienterad programering", CourseToClass = "mai-25-ha",});
+Course_List.Add(new CreateCourse{ CourseName = "introduktion mjuvaruutveckling", CourseToClass = "mai-25-ma",});
 
 
 List<UploadFile> file_list = new List<UploadFile>();
-file_list.Add(new UploadFile{
-      StudentName = "Max",
-      FileName = "exam"
-});
+file_list.Add(new UploadFile{ StudentName = "Max", FileName = "exam",});
 
 
 List<IUser> users = new List<IUser>();
@@ -28,8 +26,6 @@ users.Add(new Student("Max", "max", "pass", "mai-25-ha"));
 users.Add(new Student("Hasse", "hasse", "pass", "mai-25-ma"));
 users.Add(new Teacher("Zselyke", "zselyke", "pass"));
 users.Add(new Admin("Baggen", "baggen", "pass"));
-
-
 
 IUser? active_user = null;
 
@@ -69,7 +65,8 @@ while(running)
                   Console.WriteLine("Welcome Student " + s.Name + " in class " + s.ClassRoom);
                   Console.WriteLine("[add] a file or document");
                   Console.WriteLine("[show] a file or document");
-                  Console.WriteLine("[logout]");
+                  Console.WriteLine($"[course] to show {s.Name}(s) courses");
+                  Console.WriteLine("[logout] press enter before you type...");
                   switch(Console.ReadLine())
                   {
                         case "add" :
@@ -100,6 +97,34 @@ while(running)
                               {
                                     Console.Write($"{s.Name} has no uploaded files");
                               }
+                        break;
+
+                        case "course" : 
+                              Console.Clear();
+
+                              var Student_Courses = Course_List.Where(c => c.CourseToClass == s.ClassRoom).ToList();
+
+                              if(Student_Courses.Any())
+                              {
+                                    Console.WriteLine($"=========== {s.Name} have these courses ===========");
+                                    foreach(var course in Student_Courses)
+                                    {
+                                          Console.WriteLine($"\n{course.CourseName} for class: {course.CourseToClass}");
+                                    }
+                              }
+                              // var StudentNameToCourse = file_list.Where(f => f.StudentNameToCourse == s.ClassRoom).ToList();
+                              // var CourseNameToStudent = file_list.Where(c => c.CourseNameToStudent == a.CourseToClass).ToList();
+                              // if(StudentNameToCourse == CourseNameToStudent)
+                              // {
+                              //       foreach(var course in Course_List)
+                              //       {
+                              //             Console.WriteLine($"Course name: {course.CourseName} Classroom: {course.CourseToClass}");
+                              //       }
+                              // }
+                              // else
+                              // {
+                              //       Console.WriteLine($"{s.Name} have courses yet...");
+                              // }
                         break;
                   }
             }
@@ -146,7 +171,8 @@ while(running)
             if(active_user is Admin a)
             {
                   Console.WriteLine("Welcome Admin " + a.Name);
-                  Console.WriteLine("[add new account]");
+                  Console.WriteLine("[add] new account");
+                  Console.WriteLine("[course] to add new course");
                   Console.WriteLine("[logout]");
                   switch(Console.ReadLine())
                   {
@@ -182,6 +208,26 @@ while(running)
                               }
 
                               
+                        break;
+
+                        case "course" : 
+                              Console.Clear();
+                              Console.Write("Name of the new course: ");
+                              string input_course = Console.ReadLine();
+                              Console.Write("Add course to mai-25-ha / mai-25-ma: ");
+                              string input_course_to_class = Console.ReadLine();
+                              Course_List.Add(new CreateCourse{
+                                    CourseName = input_course,
+                                    CourseToClass = input_course_to_class,
+                              });
+                              Console.Clear();
+                              Console.WriteLine("==== new course added ====");
+                              foreach(var course in Course_List)
+                              {
+                                    Console.WriteLine($"Course name: {course.CourseName} Classroom: {course.CourseToClass}");
+                              }
+                              Console.ReadLine();
+
                         break;
                   }
             }

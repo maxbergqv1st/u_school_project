@@ -2,7 +2,8 @@ namespace App;
 
 class CreateCourse
 {
-      
+      public string CourseName { get; set; }
+      public string CourseToClass { get; set; }
 }
 
 class Admin : IUser
