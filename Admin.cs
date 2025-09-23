@@ -1,5 +1,10 @@
 namespace App;
 
+class CreateCourse
+{
+      
+}
+
 class Admin : IUser
 {
       public string Name;

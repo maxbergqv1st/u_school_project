@@ -5,13 +5,15 @@
 // Admin can create new accounts DONE
 // Upload documents DONE
 // Create schedules with events
-// Teachers can grade exams
-// Students can upload files to exams
+// Teachers can grade exams DONE
+// Students can upload files to exams DONE
 // Admin can create courses
 // ...
 // hello git hub!!
 
 
+
+List<CreateCourse> Course_List = new List<CreateCourse>();
 
 
 List<UploadFile> file_list = new List<UploadFile>();
