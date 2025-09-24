@@ -199,22 +199,41 @@ while(running)
 
                         case "course" : 
                               Console.Clear();
-                              Console.Write("Name of the new course: ");
-                              string input_course = Console.ReadLine();
-                              Console.Write("Add course to mai-25-ha / mai-25-ma: ");
-                              string input_course_to_class = Console.ReadLine();
-                              Course_List.Add(new CreateCourse{
-                                    CourseName = input_course,
-                                    CourseToClass = input_course_to_class,
-                              });
-                              Console.Clear();
-                              Console.WriteLine("==== new course added ====");
-                              foreach(var course in Course_List)
-                              {
-                                    Console.WriteLine($"Course name: {course.CourseName} Classroom: {course.CourseToClass}");
-                              }
-                              Console.ReadLine();
+                              Console.WriteLine("[show] all courses");
+                              Console.WriteLine("[add] a new course");
 
+                              switch(Console.ReadLine())
+                              {
+                                    case "show" :
+                                          Console.Clear();
+                                          Console.WriteLine("======= all live courses ========\n");
+                                          foreach(var course in Course_List)
+                                          {
+                                                Console.WriteLine($"Course name: {course.CourseName}\nClassroom: {course.CourseToClass}\n");
+                                          }
+                                          Console.WriteLine("press enter to go back...");
+                                          Console.ReadLine();
+                                    break;
+
+                                    case "add" :
+                                    Console.Clear();
+                                    Console.Write("Name of the new course: ");
+                                    string input_course = Console.ReadLine();
+                                    Console.Write("Add course to mai-25-ha / mai-25-ma: ");
+                                    string input_course_to_class = Console.ReadLine();
+                                    Course_List.Add(new CreateCourse{
+                                          CourseName = input_course,
+                                          CourseToClass = input_course_to_class,
+                                    });
+                                    Console.Clear();
+                                    Console.WriteLine("==== new course added ====");
+                                    foreach(var course in Course_List)
+                                    {
+                                          Console.WriteLine($"Course name: {course.CourseName} Classroom: {course.CourseToClass}");
+                                    }
+                                    Console.ReadLine();
+                                    break; 
+                              }
                         break;
                   }
             }
