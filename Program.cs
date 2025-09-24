@@ -4,10 +4,10 @@
 // Students, Teachers, Admin DONE
 // Admin can create new accounts DONE
 // Upload documents DONE
-// Create schedules with events
+// Create schedules with events 
 // Teachers can grade exams DONE
 // Students can upload files to exams DONE
-// Admin can create courses
+// Admin can create courses DONE
 // ...
 // hello git hub!!
 
@@ -16,6 +16,7 @@ Course_List.Add(new CreateCourse{ CourseName = "introduktion mjuvaruutveckling",
 Course_List.Add(new CreateCourse{ CourseName = "Object orienterad programering", CourseToClass = "mai-25-ha",});
 Course_List.Add(new CreateCourse{ CourseName = "introduktion mjuvaruutveckling", CourseToClass = "mai-25-ma",});
 
+List<CreateSchedule> Schedule_List = new List<CreateSchedule>();
 
 List<UploadFile> file_list = new List<UploadFile>();
 file_list.Add(new UploadFile{ StudentName = "Max", FileName = "exam",});
@@ -120,6 +121,7 @@ while(running)
             {
                   Console.WriteLine("Welcome Teacher: " + t.Name);
                   Console.WriteLine("[show] students files and grade");
+                  Console.WriteLine("[create] schedules for clasrooms");
                   Console.WriteLine("[logout]");
 
                   switch(Console.ReadLine())
@@ -151,6 +153,23 @@ while(running)
                                     Console.WriteLine("invalid option... unable to grade the file...");
                                     Console.ReadKey();
                               }
+                        break;
+
+                        case "create" :
+                              Console.Clear();
+                              var course_index = Course_List.Select((value, index) => new { Index = index + 1, Value = value});
+                              foreach(var course in course_index)
+                              {
+                                    Console.WriteLine($"\n[{course.Index}] {course.Value.CourseName}\n{course.Value.CourseToClass}\n");
+                              }
+                              Console.Write("\nNew schedule name: "); // combine to a allready known course
+                              string new_schedule_name = Console.ReadLine();
+                              Console.Write("\nSet schedule to a day: ");
+                              string new_schedule_day = Console.ReadLine();
+                              Console.Write("\nSet schedule for a class: ");
+                              string new_schedule_to_class = Console.ReadLine();
+                              // Course_List.Add(new CreateCourse{ CourseName = "introduktion mjuvaruutveckling", CourseToClass = "mai-25-ma",});
+
                         break;
                   }
             }

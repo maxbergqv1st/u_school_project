@@ -1,5 +1,12 @@
 namespace App;
 
+class CreateSchedule
+{
+      public string ScheduleEvent{ get; set; }
+      public string ScheduleDay { get; set; }
+      public string ScheduleToClass { get; set; }
+}
+
 class Teacher : IUser
 {
       public string Name;
